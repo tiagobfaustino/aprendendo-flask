@@ -1,6 +1,5 @@
 from app import db
 
-
 class Pessoa(db.Model):
     __tablename__ = 'pessoas'
 
@@ -10,7 +9,7 @@ class Pessoa(db.Model):
     sexo = db.Column(db.String(1))
     salario = db.Column(db.Float)
 
-    def __init__(self, nome, idade=18, sexo='M', salario='1039'):
+    def __init__(self, nome='Anônimo', idade=18, sexo='M', salario='1039'):
         self.nome = nome
         self.idade = idade
         self.sexo = sexo
