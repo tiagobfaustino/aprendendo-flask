@@ -52,11 +52,11 @@ def consulta():
 
     if campo == 'nome':
         pessoas = Pessoa.query.filter(Pessoa.nome.like(consulta)).all()
-    elif campo == 'idade'
+    elif campo == 'idade':
         pessoas = Pessoa.query.filter(Pessoa.idade.like(consulta)).all()
-    elif campo == 'sexo'
+    elif campo == 'sexo':
         pessoas = Pessoa.query.filter(Pessoa.sexo.like(consulta)).all()
-    elif campo == 'salario'
+    elif campo == 'salario':
         pessoas = Pessoa.query.filter(Pessoa.salario.like(consulta)).all()
     else:
         pessoas = Pessoas.query.all()
@@ -87,7 +87,7 @@ def edicao(id=0):
     pessoa = Pessoa.query.filter_by(id=id).first()
     return render_template('edicao.html', pessoa=pessoa)
 
-@app.route('salvar_edicao', methods=['POST'])
+@app.route('/salvar_edicao', methods=['POST'])
 def salvar_edicao():
     Id = int(request.form.get('id'))
     Nome = request.form.get('nome')
@@ -129,27 +129,27 @@ def graficos():
     pessoasF = Pessoa.query.filter_by(sexo='F').all()
     
     salarioM = 0
-    for m in pessoaM:
+    for m in pessoasM:
         salarioM += m.salario
-    if len(pessoaM) > 0
+    if len(pessoasM) > 0:
         salarioM = salarioM / len(pessoasM)
 
     salarioF = 0
-    for f in pessoaF:
+    for f in pessoasF:
         salarioF += f.salario
-    if len(pessoaF) > 0
+    if len(pessoasF) > 0:
         salarioF = salarioF / len(pessoasF)
 
     idadeM = 0
-    for m in pessoaM:
+    for m in pessoasM:
         idadeM += m.idade
-    if len(pessoaM) > 0
+    if len(pessoasM) > 0:
         idadeM = idadeM / len(pessoasM)
 
     idadeF = 0
-    for f in pessoaF:
+    for f in pessoasF:
         idadeF += f.idade
-    if len(pessoaF) > 0
+    if len(pessoasF) > 0:
         idadeF = idadeF / len(pessoasF)
 
     return render_template('graficos.html',
