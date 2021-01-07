@@ -91,12 +91,12 @@
             function relatorio() {
                 const doc = new jsPDF({orientation: 'landscape'});
                 
-                const text = document.getElementById('dados').innerText;
+                const texto = document.getElementById('dados').innerText;
                 const arrLinhas = texto.split('#');
                 let conteudo = 'RELATÓRIO DE PESSOAS\n\n';
                 for (let linha=0; linha < arrLinhas.length; linha++) {
                     let arrColunas = arrLinhas[linha].split('|');
-                    arrColunas[0] = arrColuna[0].trim().padEnd(35, '*');
+                    arrColunas[0] = arrColunas[0].trim().padEnd(35, '*');
 
                     if(arrColunas[0].indexOf('*') > 0) {
                         conteudo += `NOME: ${arrColunas[0]} - `+

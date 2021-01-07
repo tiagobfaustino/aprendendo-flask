@@ -95,7 +95,7 @@ def salvar_edicao():
     Sexo = request.form.get('sexo')
     Salario = float(request.form.get('salario'))
 
-    pessoa = Pessoa.query.filter_by(id=Id)
+    pessoa = Pessoa.query.filter_by(id=Id).first()
 
     pessoa.nome = Nome
     pessoa.idade = Idade
@@ -115,12 +115,12 @@ def delecao(id=0):
 def salvar_delecao():
     Id = int(request.form.get('id'))
 
-    pessoa = Pessoa.query.filter_by(id=id).first()
+    pessoa = Pessoa.query.filter_by(id=Id).first()
 
     db.session.delete(pessoa)
     db.session.commit()
 
-    pessoas = Pessoas.query.all()
+    pessoas = Pessoa.query.all()
     return render_template('listagem.html', pessoas=pessoas, ordem='id')
 
 @app.route('/graficos')
